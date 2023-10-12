@@ -1,16 +1,24 @@
-import { HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react";
-import useGenres from "../Hooks/useGenres";
+import {
+  Button,
+  HStack,
+  Image,
+  List,
+  ListItem,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
+import useGenres, { Genre } from "../Hooks/useGenres";
 import getCropperImageUrl from "../Services/image-url";
 import GenreListSkeleton from "./GenreListSkeleton";
 
-const GenreList = () => {
+interface Props {
+  onSelectGenre: (genre: Genre) => void;
+}
+const GenreList = ({ onSelectGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
-  const GenreListSkeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+  const ListSkeleton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   if (error) {
     return null;
-  }
-  if (isLoading) {
-    return <Spinner />;
   }
   return (
     <>
@@ -23,14 +31,20 @@ const GenreList = () => {
                 borderRadius={8}
                 src={getCropperImageUrl(genre.image_background)}
               />
-              <Text fontSize="lg" key={genre.id}>
+              <Button
+                onClick={() => onSelectGenre(genre)}
+                fontSize="lg"
+                key={genre.id}
+                variant="link"
+              >
                 {genre.name}
-              </Text>
+              </Button>
             </HStack>
-            {/* {isLoading&& <GenreListSkeleton/>} */}
           </ListItem>
         ))}
       </List>
+      {isLoading &&
+        ListSkeleton.map((card) => <GenreListSkeleton key={card} />)}
     </>
   );
 };
