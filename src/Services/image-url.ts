@@ -1,9 +1,8 @@
-import React from "react";
-
+import noImages from "../assets/no-image-placeholder.webp";
 const getCropperImageUrl = (url: string) => {
   const target = "media/";
   if (!url) {
-    return "Image cannot be found";
+    return noImages;
   }
   const index = url.indexOf(target) + target.length;
 

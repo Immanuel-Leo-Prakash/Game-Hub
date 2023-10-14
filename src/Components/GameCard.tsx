@@ -13,7 +13,6 @@ const GameCard = ({ game }: Props) => {
     <Card>
       <Image
         src={getCropperImageUrl(game.background_image)}
-        fallbackSrc="https://via.placeholder.com/150"
         borderRadius={10}
       />
       <CardBody>
