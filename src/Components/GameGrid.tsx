@@ -6,6 +6,7 @@ import GameCardContainer from "./GameCardContainer";
 import GameCardSkeleton from "./GameCardSkeleton";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { BsTextCenter } from "react-icons/bs";
 
 interface Props {
   gameQuery: GameQuery;
@@ -35,7 +36,11 @@ const GameGrid = ({ gameQuery }: Props) => {
       hasMore={!!hasNextPage}
       loader={<Spinner />}
     >
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+        spacing={6}
+        marginY={10}
+      >
         {isLoading &&
           skeletonGrid.map((skeleton) => (
             <GameCardContainer key={skeleton}>
