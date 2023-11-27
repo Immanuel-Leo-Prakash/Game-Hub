@@ -1,4 +1,3 @@
-import React from "react";
 import useTrailer from "../Hooks/useTrailer";
 
 interface Props {
