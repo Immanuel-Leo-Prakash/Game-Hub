@@ -7,7 +7,7 @@ import {
   ListItem,
 } from "@chakra-ui/react";
 import useGenres from "../Hooks/useGenres";
-import { Genre } from "../Entities/Genre";
+import Genre from "../Entities/Genre";
 import getCropperImageUrl from "../Services/image-url";
 import useGameQueryStore from "../store";
 import GenreListSkeleton from "./GenreListSkeleton";
